@@ -1,0 +1,60 @@
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+# scripts that are called at very beginning, before repo cloning
+init:
+  - git config --global core.autocrlf input
+
+# fetch repository as zip archive
+shallow_clone: true                 # default is "false"
+
+# set clone depth
+clone_depth: 5                      # clone entire repository history if not defined
+
+# environment variables
+environment:
+  matrix:
+    - nodejs_version: "4"
+    - nodejs_version: "5"
+    - nodejs_version: "6"
+
+# build platform, i.e. x86, x64, Any CPU. This setting is optional.
+platform: Any CPU
+
+# this is how to allow failing jobs in the matrix
+matrix:
+  fast_finish: true     # set this flag to immediately finish build once one of the jobs fails.
+
+# build cache to preserve files/folders between builds
+cache:
+  - node_modules -> package.json                   # local npm modules
+
+# scripts that run after cloning repository
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - npm install -g npm
+  - npm install
+
+build:
+  parallel: true                  # enable MSBuild parallel builds
+  verbosity: detailed
+
+# to run your custom scripts instead of automatic tests
+test_script:
+  - node --version && npm --version
+  - ps: "npm test # Power Shell"
+  - cmd: "npm test"
+
+# to disable deployment
+deploy: off
+
+#---------------------------------#
+#         notifications           #
+#---------------------------------#
+
+notifications:
+  - provider: Slack
+    auth_token:
+      secure: qgv7zIleT6fdUiJEzeQ/bfN7ZpvHCB8jzpevA72btIUPM0FRqNqytjzeOOWMOA+yegj5QzqSLuvlXIdTNF+CgQ==
+    channel: '#appveyor'

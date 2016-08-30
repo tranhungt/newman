@@ -1,6 +1,7 @@
-[![Build Status](https://travis-ci.org/postmanlabs/newman.svg?branch=master)](https://travis-ci.org/postmanlabs/newman)
+[![Travis Build Status](https://travis-ci.org/postmanlabs/newman.svg?branch=master)](https://travis-ci.org/postmanlabs/newman)
 [![Dependency Status](https://david-dm.org/postmanlabs/newman.svg)](https://david-dm.org/postmanlabs/newman)
 [![devDependency Status](https://david-dm.org/postmanlabs/newman/dev-status.svg)](https://david-dm.org/postmanlabs/newman#info=devDependencies)
+[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/postmanlabs/newman?branch=master&svg=true)](https://ci.appveyor.com/api/projects/github/postmanlabs/newman)
 
 <a href="https://www.getpostman.com/"><img src="https://raw.githubusercontent.com/postmanlabs/postmanlabs.github.io/develop/global-artefacts/postman-logo%2Btext-320x132.png" /></a><br />
 _Supercharge your API workflow<br/>Modern software is built on APIs. Postman helps you develop APIs faster._
